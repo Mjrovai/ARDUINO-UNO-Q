@@ -26,8 +26,7 @@
 16. [Tips, Tricks, and Troubleshooting](#16-tips-tricks-and-troubleshooting)
 17. [Going Further](#17-going-further)
 18. [Conclusion](#18-conclusion)
-19. [References](#19-references)
-
+19. [Resources](#19-resources)
 
 ---
 
@@ -90,6 +89,8 @@ By the end of this tutorial, you will be able to connect to the UNO Q headlessly
 
 ## 2. What Is the Arduino UNO Q?
 
+![](./images/jpeg/uno-q.jpg)
+
 The Arduino UNO Q is a **hybrid single-board computer** that combines two processors on one UNO-form-factor board:
 
 | Component | Role | Details |
@@ -117,6 +118,8 @@ Both variants share the same processor, connectivity (dual-band Wi-Fi 5 + Blueto
 - **Bluetooth**: 5.1.
 
 > **Important**: The UNO Q uses a single USB-C port for everything. Make sure you use a **data-capable USB-C cable** (not a charge-only cable). Some USB hubs and Apple USB-C adapters may not be recognized.
+
+For more details: [Arduino® UNO Q 1 User Manual]( https://docs.arduino.cc/resources/datasheets/ABX00162-datasheet.pdf)
 
 ---
 
@@ -1232,19 +1235,8 @@ Now that you have a working CLI/SSH development environment, here are some paths
 - **Modulino nodes**: Use the Qwiic connector for plug-and-play sensors and actuators.
 - **Arduino shields**: Traditional UNO shields are compatible with the header layout.
 
-### Useful Resources
-
-| Resource | URL |
-|---|---|
-| Arduino UNO Q Documentation | https://docs.arduino.cc/hardware/uno-q |
-| Arduino App CLI Tutorial | https://docs.arduino.cc/software/app-lab/tutorials/cli |
-| Arduino App CLI (GitHub) | https://github.com/arduino/arduino-app-cli |
-| Bricks Documentation | https://docs.arduino.cc/software/app-lab/tutorials/bricks |
-| Blink CLI Example (Shawn Hymel) | https://github.com/ShawnHymel/arduino_uno_q_blink_cli |
-| Edge Impulse — Arduino UNO Q | https://docs.edgeimpulse.com/hardware/boards/arduino-uno-q |
-| UNO Q Datasheet (PDF) | https://docs.arduino.cc/resources/datasheets/ABX00162-datasheet.pdf |
-
 ---
+
 ## 18. Conclusion
 
 ### What We Covered
@@ -1319,11 +1311,27 @@ Each tutorial will follow the same terminal-first, VS Code/SSH workflow establis
 
 ### A Note on the Arduino VENTUNO Q
 
+![](./images/png/vintuno-q.png)
+
 Arduino has recently announced the VENTUNO Q, a more powerful successor featuring the Qualcomm Dragonwing IQ8 with a dedicated NPU capable of up to 40 TOPS, 16 GB of RAM, and Raspberry Pi HAT compatibility. When available, the VENTUNO Q will open the door to significantly more demanding on-device AI workloads — including vision-language models, real-time multi-camera object tracking, and on-device speech synthesis — while maintaining the same dual-brain architecture and development workflow. Skills acquired on the UNO Q will transfer directly to the VENTUNO Q.
 
 ---
-## 19. References
 
+## 19. Resources
+
+### Useful Resources
+
+| Resource | URL |
+|---|---|
+| Arduino UNO Q Documentation | https://docs.arduino.cc/hardware/uno-q |
+| Arduino App CLI Tutorial | https://docs.arduino.cc/software/app-lab/tutorials/cli |
+| Arduino App CLI (GitHub) | https://github.com/arduino/arduino-app-cli |
+| Bricks Documentation | https://docs.arduino.cc/software/app-lab/tutorials/bricks |
+| Blink CLI Example (Shawn Hymel) | https://github.com/ShawnHymel/arduino_uno_q_blink_cli |
+| Edge Impulse — Arduino UNO Q | https://docs.edgeimpulse.com/hardware/boards/arduino-uno-q |
+| UNO Q Datasheet (PDF) | https://docs.arduino.cc/resources/datasheets/ABX00162-datasheet.pdf |
+
+### References
 1. Arduino, "Arduino UNO Q Product Page," https://www.arduino.cc/product-uno-q/
 2. Arduino, "UNO Q Documentation," https://docs.arduino.cc/hardware/uno-q
 3. Arduino, "Arduino App CLI — Manage Apps from the Command Line," https://docs.arduino.cc/software/app-lab/tutorials/cli
@@ -1334,4 +1342,6 @@ Arduino has recently announced the VENTUNO Q, a more powerful successor featurin
 8. Foundries.io, "Arduino UNO Q Elf Detector Series — Part 0: Introduction," https://www.foundries.io/insights/blog/arduino-uno-q-elf-detector/
 
 ---
+
+
 *Tutorial created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
