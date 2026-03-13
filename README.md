@@ -25,8 +25,9 @@
 15. [Essential Linux Commands for the UNO Q](#15-essential-linux-commands-for-the-uno-q)
 16. [Tips, Tricks, and Troubleshooting](#16-tips-tricks-and-troubleshooting)
 17. [Going Further](#17-going-further)
-18. [References](#18-references)
-19. [Conclusion](#19-conclusion)
+18. [Conclusion](#18-conclusion)
+19. [References](#19-references)
+
 
 ---
 
@@ -1244,21 +1245,7 @@ Now that you have a working CLI/SSH development environment, here are some paths
 | UNO Q Datasheet (PDF) | https://docs.arduino.cc/resources/datasheets/ABX00162-datasheet.pdf |
 
 ---
-
-## 18. References
-
-1. Arduino, "Arduino UNO Q Product Page," https://www.arduino.cc/product-uno-q/
-2. Arduino, "UNO Q Documentation," https://docs.arduino.cc/hardware/uno-q
-3. Arduino, "Arduino App CLI — Manage Apps from the Command Line," https://docs.arduino.cc/software/app-lab/tutorials/cli
-4. Shawn Hymel, "How to Use the Command Line (CLI) With the Arduino UNO Q," https://shawnhymel.com/3074/how-to-use-the-command-line-cli-with-the-arduino-uno-q/
-5. Edge Impulse, "Arduino UNO Q," https://docs.edgeimpulse.com/hardware/boards/arduino-uno-q
-6. Kevin McAleer, "How to Set Up WiFi on the Arduino Uno Q," https://www.kevsrobots.com/blog/arduino-uno-q-wifi-setup.html
-7. Kevin McAleer, "5 Tips for Managing Your Arduino Uno Q," https://www.kevsrobots.com/blog/uno-q-tips.html
-8. Foundries.io, "Arduino UNO Q Elf Detector Series — Part 0: Introduction," https://www.foundries.io/insights/blog/arduino-uno-q-elf-detector/
-
----
-
-## 19. Conclusion
+## 18. Conclusion
 
 ### What We Covered
 
@@ -1335,5 +1322,16 @@ Each tutorial will follow the same terminal-first, VS Code/SSH workflow establis
 Arduino has recently announced the VENTUNO Q, a more powerful successor featuring the Qualcomm Dragonwing IQ8 with a dedicated NPU capable of up to 40 TOPS, 16 GB of RAM, and Raspberry Pi HAT compatibility. When available, the VENTUNO Q will open the door to significantly more demanding on-device AI workloads — including vision-language models, real-time multi-camera object tracking, and on-device speech synthesis — while maintaining the same dual-brain architecture and development workflow. Skills acquired on the UNO Q will transfer directly to the VENTUNO Q.
 
 ---
+## 19. References
 
+1. Arduino, "Arduino UNO Q Product Page," https://www.arduino.cc/product-uno-q/
+2. Arduino, "UNO Q Documentation," https://docs.arduino.cc/hardware/uno-q
+3. Arduino, "Arduino App CLI — Manage Apps from the Command Line," https://docs.arduino.cc/software/app-lab/tutorials/cli
+4. Shawn Hymel, "How to Use the Command Line (CLI) With the Arduino UNO Q," https://shawnhymel.com/3074/how-to-use-the-command-line-cli-with-the-arduino-uno-q/
+5. Edge Impulse, "Arduino UNO Q," https://docs.edgeimpulse.com/hardware/boards/arduino-uno-q
+6. Kevin McAleer, "How to Set Up WiFi on the Arduino Uno Q," https://www.kevsrobots.com/blog/arduino-uno-q-wifi-setup.html
+7. Kevin McAleer, "5 Tips for Managing Your Arduino Uno Q," https://www.kevsrobots.com/blog/uno-q-tips.html
+8. Foundries.io, "Arduino UNO Q Elf Detector Series — Part 0: Introduction," https://www.foundries.io/insights/blog/arduino-uno-q-elf-detector/
+
+---
 *Tutorial created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
