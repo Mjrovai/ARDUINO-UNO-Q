@@ -1,6 +1,6 @@
 # Arduino UNO Q Hands-On:
 
-### Headless Setup and CLI Development for Edge AI
+### Headless Setup and VSCode/CLI Development for Edge AI
 
 ![](./images/png/ChatGPT-Image.png)
 
