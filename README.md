@@ -700,6 +700,18 @@ default_profile: default
 
 > **Note**: The four libraries listed above (MsgPack, DebugLog, ArxContainer, ArxTypeTraits) are required by the Bridge system. Always include them. Add any extra Arduino libraries your sketch needs (with exact version numbers).
 
+### Creating a new App
+
+You can create a new app by using the CLI command, `arduino-app-cli app new "<NAME_APP>"`, for example:
+
+```bash
+arduino-app-cli app new "test"
+```
+
+This will create a new App named `test` along with its main files.
+
+![](./images/png/new_app.png)
+
 ---
 
 ## 12. First Project: LED Blink (CLI Workflow)
@@ -882,7 +894,15 @@ The LED will stop blinking, and in the terminal, the message below will be displ
 
 The UNO Q ships with a rich set of pre-installed example applications that demonstrate everything from basic LED control to AI-powered computer vision. You can discover, run, study, and customize all of them entirely from the terminal or VS Code over SSH — no App Lab GUI required.
 
-From an SSH terminal (or the VS Code integrated terminal), run: `arduino-app-cli app list`.
+> To guarantee that you have the latest pre-loaded models you can updated the system with the command:
+>
+> `arduino-app-cli system update`
+
+From an SSH terminal (or the VS Code integrated terminal), run:
+
+ `arduino-app-cli app list`.
+
+This command will show all installed models, including the user created ones:
 
 ![](./images/png/app-examples.png)
 
@@ -921,7 +941,7 @@ arduino-app-cli app stop examples:blink
 
 ### Step 3 — Studying an Example's Source Code in VS Code
 
-Since the examples live in `~/.local/share/arduino-app-cli/examples/`, you can browse them in VS Code by opening that folder:
+Since the examples live in `~/.local/share/arduino-app-cli/examples/`, you can browse (and run) them in VS Code by opening that folder:
 
 1. In VS Code (connected via Remote-SSH), go to **File → Open Folder…**
 2. Navigate to `/home/arduino/.local/share/arduino-app-cli/examples/`
@@ -995,7 +1015,9 @@ The `arduino-app-cli` tool is pre-installed on the UNO Q and manages the full li
 | `arduino-app-cli app stop <path>` | Stop a running application |
 | `arduino-app-cli app logs <path>` | View the Python-side log output |
 | `arduino-app-cli app list` | List installed/running applications |
-| `arduino-app-cli update` | Update the CLI tool and board components |
+| `arduino-app-cli app new "<name>"` | Create a new App |
+| `arduino-app-cli system cleanup` | Clean unused containers and images |
+| `arduino-app-cli system update` | Update the CLI tool and board components |
 
 > For full documentation, see the [Arduino App CLI repo](https://github.com/arduino/arduino-app-cli) and the [official CLI tutorial](https://docs.arduino.cc/software/app-lab/tutorials/cli/).
 
@@ -1021,7 +1043,7 @@ free -h
 df -h
 
 # Running processes
-htop                  # (install with: sudo apt install htop)
+htop                  # (if necessary, install with: sudo apt install htop)
 ```
 
 ### Network Management
@@ -1111,6 +1133,7 @@ sudo reboot
 
 # Shut down the board
 sudo shutdown -h now
+sudo halt
 ```
 
 ---
