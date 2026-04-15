@@ -25,7 +25,7 @@
 
 ## 1. Overview
 
-In the [previous tutorial](../setup/setup.qmd), we set up the Arduino UNO Q for headless development using ADB, SSH, and VS Code Remote-SSH. Now, we put that foundation to work with our first Edge AI application: **Image Classification**.
+In the [previous tutorial](../Setup/README.md), we set up the Arduino UNO Q for headless development using ADB, SSH, and VS Code Remote-SSH. Now, we put that foundation to work with our first Edge AI application: **Image Classification**.
 
 Image classification is the "Hello World" of computer vision and machine learning — given an image, the model assigns it to one of several predefined categories. It is one of the most widely deployed ML tasks at the edge, powering applications from quality inspection in factories to wildlife monitoring in the field.
 
@@ -52,7 +52,7 @@ Along the way, we will use the UNO Q's dual-brain architecture: **Python on the 
 
 > **Before starting this tutorial, make sure you have:**
 >
-> - Completed the [Arduino UNO Q Setup Tutorial](../setup/setup.qmd) — UNO Q connected via SSH / VS Code Remote-SSH
+> - Completed the [Arduino UNO Q Setup Tutorial](../Setup/README.md) — UNO Q connected via SSH / VS Code Remote-SSH
 > - An Edge Impulse account (free at [edgeimpulse.com](https://edgeimpulse.com))
 > - A USB webcam (most USB webcams work — e.g., Logitech C270 or similar)
 > - A USB hub with power delivery (to connect both the webcam and power to the UNO Q)
@@ -1074,7 +1074,7 @@ In this tutorial, we progressed through three levels of image classification on 
 
 ### What's Next
 
-In the [next tutorial](../object_detection/object_detection.qmd), we will extend our computer vision skills to **Object Detection** — using FOMO and YOLO to detect not just *what* is in the image, but also *where* it is. This opens the door to applications in tracking, counting, and spatial awareness.
+In the [next tutorial](../Object_Detection/README.md), we will extend our computer vision skills to **Object Detection** — using FOMO and YOLO to detect not just *what* is in the image, but also *where* it is. This opens the door to applications in tracking, counting, and spatial awareness.
 
 ---
 
