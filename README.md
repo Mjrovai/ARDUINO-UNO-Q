@@ -42,7 +42,7 @@ The UNO Q does not replace the MCU boards or the Raspberry Pi in our curriculum 
 - **Cost-effective classroom deployment**: At ~$50 for the 2 GB variant, the UNO Q is comparable in price to a Raspberry Pi 4 but includes the MCU subsystem, Wi-Fi, Bluetooth, and LED matrix out of the box — no additional HATs or accessories needed for basic projects.
 
 ---
-## [1. Setup](../Setup/README.md)
-## [2. Image Classification](../Image_Classification/README.md)
+## [1. Setup](./Setup/README.md)
+## [2. Image Classification](./Image_Classification/README.md)
 ---
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
