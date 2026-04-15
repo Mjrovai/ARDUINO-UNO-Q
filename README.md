@@ -1,5 +1,5 @@
 # Arduino UNO Q Hands-On Tutorials:
-![](./images/jpeg/uno-q.jpg)
+![](./Setup/images/jpeg/uno-q.jpg)
 
 ---
 ## Why the Arduino UNO Q for an ML Engineering Course?
