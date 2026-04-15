@@ -57,7 +57,7 @@ Along the way, we will use the UNO Q's dual-brain architecture: **Python on the 
 > - A USB webcam (most USB webcams work — e.g., Logitech C270 or similar)
 > - A USB hub with power delivery (to connect both the webcam and power to the UNO Q)
 
-![](./images/jpeg/hub.jpg)
+![](./images/png/hub.png)
 
 ### Hardware
 
