@@ -44,5 +44,9 @@ The UNO Q does not replace the MCU boards or the Raspberry Pi in our curriculum 
 ---
 ## [1. Setup](./Setup/README.md)
 ## [2. Image Classification](./Image_Classification/README.md)
+## 3. Object Detection
+## 4. KWS
+## 5. Movement Classification and Anomaly Detection
+## 6. Generative AI
 ---
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
