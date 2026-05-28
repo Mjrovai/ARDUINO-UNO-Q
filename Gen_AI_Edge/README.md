@@ -1124,7 +1124,7 @@ Button: one leg → D3
 ```
 
 
-![](./images/jpeg/hardware.jpg)
+![](./images/jpeg/hw.jpg)
 
 
 ### Step 2 — `sketch/sketch.ino`
