@@ -1123,7 +1123,9 @@ Button: one leg → D3
         other leg → GND
 ```
 
+
 ![](./images/jpeg/hardware.jpg)
+
 
 ### Step 2 — `sketch/sketch.ino`
 
