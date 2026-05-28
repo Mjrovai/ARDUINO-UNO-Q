@@ -1753,7 +1753,7 @@ Being honest about what doesn't work well at this scale:
 
 ### Where Generative AI Fits in the Edge AI Curriculum
 
-![image-20260528172145635](/Users/marcelo_rovai/Dropbox/2026/20-MJRoBot/Arduino-UNO-Q/TUTORIAL/slm/images/png/comparation.png)
+![](./images/png/comp.png)
 
 The UNO Q is where generative AI becomes possible at the edge but stays bounded: small models, short outputs, batch-rate inference. Students who understand the constraints here won't be surprised when they hit the same constraints on a real production deployment.
 
