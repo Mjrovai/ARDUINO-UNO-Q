@@ -59,7 +59,6 @@ This tutorial assumes you have completed the [Setup](../Setup/README.md) chapter
 - Basic Bridge RPC patterns (`Bridge.call()` from the sketch, `Bridge.provide()` from Python).
 
 > If any of these are unfamiliar, work through Setup first. This chapter builds on that foundation rather than repeating it.
->
 
 ## 2. Small Language Models on the Edge: What's Realistic on the UNO Q
 
@@ -132,8 +131,6 @@ Recommendations:
 - **Try Q8_0** if you have space (~850 MB). Quality is meaningfully better, but leaves very little headroom on the current factory image. (This is the choice for this tutorial.)
 - **For production use, combine Q4 with strong few-shot prompting** and `response_format: json_object` to compensate for quantization noise.
 
----
-
 ## 3. Hardware and Software Requirements
 
 ### Hardware
@@ -160,8 +157,6 @@ Recommendations:
 | `build-essential`, `cmake`, `git` | Build llama.cpp from source |
 | `libcurl4-openssl-dev` | Enables in-binary model downloads |
 | `flask`, `requests` | Python HTTP and API client (via `requirements.txt`) |
-
----
 
 ## 4. Preparing the Linux Side
 
@@ -206,8 +201,6 @@ sudo apt install -y build-essential cmake git pkg-config \
 ```
 
 > **Note**: `python3-flask` and `python3-requests` get installed inside the app's own environment by `arduino-app-cli` via `requirements.txt`. Don't install them system-wide.
-
----
 
 ## 5. Building llama.cpp from Source
 
@@ -284,8 +277,6 @@ After cleanup, you should have roughly 1.5 GB free — enough for the model, the
 
 > **Alternative: Use pre-built binaries.** llama.cpp publishes pre-built aarch64 Linux binaries on its [GitHub Releases page](https://github.com/ggml-org/llama.cpp/releases). Download the tarball, extract `llama-server` and `llama-cli`, and skip the whole build step. This turns this section into a 2-minute download instead of a 25-minute build, which is useful for classroom setups where you don't need to teach the build process.
 
----
-
 ## 6. Choosing and Downloading a Model
 
 ### Step 1 — Create the Models Directory
@@ -333,8 +324,6 @@ Things that helped in the tests:
 - **`presence_penalty=1.5`** to prevent repetition loops.
 - **Low `max_tokens`** (60–80) to keep answers short and focused.
 - **Trying the Unsloth `UD-Q4_K_XL` quant**, which upcasts sensitive layers automatically.
-
----
 
 ## 7. Llama-CLI
 
@@ -451,7 +440,6 @@ or, after adding `~/` to `PATH` and reloading the shell:
 ```bash
 qwen_cli_llama.sh "Explain edge AI in two sentences."
 ```
-
 ## 8. Llama-server
 
 The Arduino UNO Q can host a small language model directly on its Linux side, and the easiest way to expose that model to applications is through `llama-server`. Instead of calling the model via a one-shot CLI, `llama-server` loads the GGUF file into RAM once and exposes a simple HTTP API on localhost, so any script or service on the board can send prompts and receive completions via JSON. That fits the UNO Q's dual-brain architecture: the QRB2210 runs the SLM and higher-level logic; the MCU handles real-time I/O; both sides talk to a single long-lived model process rather than repeatedly spawning and tearing it down.
@@ -802,8 +790,6 @@ During testing on a UNO Q 4 GB **without any heatsink or fan**:
 
 All of these are well under the 70–80 °C range where ARM cores begin to throttle. The UNO Q runs cooler than a Raspberry Pi 5 under comparable loads. **No heatsink or fan is required** for normal SLM workloads, even in sustained use. For enclosures with poor ventilation (outdoor sensor boxes, stacked classroom boards), a small adhesive heatsink is cheap insurance but not strictly necessary.
 
----
-
 ## 9. The Dual-Brain Architecture for Generative AI
 
 The UNO Q's dual-brain architecture maps naturally onto the SLM use case: real-time sensing on the MCU, AI reasoning on the MPU, with **Bridge RPC** as the glue between them.
@@ -838,8 +824,6 @@ sequenceDiagram
     P-->>S: 2.0  (risk code as float)
     Note over S: set LED red
 ```
-
----
 
 ## 10. Project Structure for a Bridge + Flask SLM App
 
@@ -888,8 +872,6 @@ bricks: []
 ```
 
 The `ports: [7000]` line tells the App Lab runtime to forward port 7000 so external clients can reach the Flask endpoint. Without this, Flask binds inside the container only and is invisible from outside the board.
-
----
 
 ## 11. Building the Python Side
 
@@ -1118,8 +1100,6 @@ Design choices highlights:
 - **Few-shot in code, not in the prompt template.** Keeps the chat template clean and lets you swap models without rewriting prompts.
 - **`threaded=False`** on Flask. The model serves one request at a time; threading just queues backpressure on a board with no extra cores to spare.
 
----
-
 ## 12. Building the MCU Side
 
 The sketch reads sensors (temperature, humidity, water presence), calls `Bridge.call("classify", ...)`, and drives actuators (RGB LEDs).
@@ -1316,8 +1296,6 @@ profiles:
 default_profile: default
 ```
 
----
-
 ## 13. Running the Full Application
 
 ### Step 1 — Confirm llama-server Is Running
@@ -1380,8 +1358,6 @@ Watch the RGB LEDs on the board. After each inference cycle, exactly one LED sta
 ```bash
 arduino-app-cli app stop .
 ```
-
----
 
 ## 14. The Optional Flask Endpoint: Exposing the SLM Over HTTP
 
@@ -1559,7 +1535,7 @@ DASHBOARD_HTML = """
 """
 ```
 
-> The complete `main.py` can be found on the project repo: xxxxxxx
+> The complete `main.py` can be found on the [project repo](https://github.com/Mjrovai/ARDUINO-UNO-Q/blob/main/Gen_AI_Edge/Scripts/main.py).
 
 #### Usage
 
@@ -1686,8 +1662,6 @@ If you deleted the llama.cpp source tree and still need to rebuild later, use a 
 - Confirm Flask is bound to `0.0.0.0`, not `127.0.0.1`.
 - Some networks isolate clients from each other. Try a hotspot from your phone.
 
----
-
 ## 17. Going Further
 
 ### Alternative SLM Backends
@@ -1719,8 +1693,6 @@ For applications where you want a *trained* classifier (rather than a general-pu
 For example, a YOLO model could detect standing water in tires, triggering the "Water Switch" sensor automatically.
 
 ![](./images/png/yolo-integration.png)
-
----
 
 ## 18. Conclusion
 
@@ -1767,14 +1739,13 @@ The UNO Q is where generative AI becomes possible at the edge but stays bounded:
 
 The VENTUNO Q, with its 40 TOPS Dragonwing IQ8 NPU and 16 GB of RAM, will change what's realistic. SLMs with several billion parameters become interactive; multimodal Qwen3.5-4B (with native vision) becomes practical; multi-turn agents with tool use work in real time. The patterns from this chapter (Bridge RPC + Flask + systemd + OpenAI-compatible HTTP) port directly. Only the model sizes and the latency numbers change.
 
----
-
 ## 19. Resources
 
 ### Useful Resources
 
 | Resource | URL |
 |---|---|
+| Project repository | <https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Gen_AI_Edge> |
 | llama.cpp repository | <https://github.com/ggml-org/llama.cpp> |
 | llama.cpp HTTP server docs | <https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md> |
 | Qwen3.5-0.8B GGUF (Bartowski) | <https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF> |
