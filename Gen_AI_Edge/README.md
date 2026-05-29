@@ -790,6 +790,33 @@ During testing on a UNO Q 4 GB **without any heatsink or fan**:
 
 All of these are well under the 70–80 °C range where ARM cores begin to throttle. The UNO Q runs cooler than a Raspberry Pi 5 under comparable loads. **No heatsink or fan is required** for normal SLM workloads, even in sustained use. For enclosures with poor ventilation (outdoor sensor boxes, stacked classroom boards), a small adhesive heatsink is cheap insurance but not strictly necessary.
 
+### Bonus: The Built-In WebUI
+
+Recent llama.cpp builds ship a SvelteKit-based chat interface embedded directly into the `llama-server` binary. No extra install, no extra flag. If the build from Section 5 is recent enough, the UI is already running on the same port as the API.
+
+From the UNO Q itself, use `http://127.0.0.1:8081/`, or tunnel from your laptop with `ssh -L 8081:127.0.0.1:8081 arduino@<UNO_Q_IP>` and open `http://localhost:8081/` in the host browser.
+
+From any device on the same Wi-Fi, open:
+
+**http://<UNO_Q_IP>:8081/**  (for example, in my case: http://192.168.5.114:8081/)
+
+![](./images/png/llama-ui.png)
+
+What's useful for this tutorial:
+
+- Streaming chat against your local Qwen3.5-0.8B, no extra app needed.
+- A live sampling panel for `temperature`, `top_p`, `presence_penalty`, and friends. Useful for tuning before you bake values into `main.py` on the next phase of the project.
+- Reasoning/thinking blocks render in their own collapsible section. With `--reasoning off --reasoning-budget 0` the section stays empty, which is a quick visual confirmation that the flag worked.
+- Runs alongside the next section, Flask dashboard on `port 7000`, without conflict. You can demo the raw model on `:8081` and the structured dengue app on `:7000` in the same session.
+- For more informations, visit [guide : using `llama-ui` — the new WebUI of llama.cpp](https://github.com/ggml-org/llama.cpp/discussions/16938).
+
+What to skip on a 4 GB UNO Q:
+
+- **File uploads.** The UI accepts images and PDFs, but Qwen3.5-0.8B is text-only. Dropping an image either gets ignored or produces a hallucination. Vision-capable GGUFs (Qwen3.5-VL, LLaVA variants) don't fit comfortably in this board's RAM.
+- **MCP tool calling and built-in agent tools.** Available in the UI, but enabling filesystem or shell tools on a server bound to `0.0.0.0` is a security footgun. Keep them off in this setup.
+
+> If the URL returns a bare JSON error instead of a UI, your `llama-server` build predates the embedded WebUI. Rebuild from the latest llama.cpp `master`, or grab a recent pre-built aarch64 binary from the GitHub Releases page.
+
 ## 9. The Dual-Brain Architecture for Generative AI
 
 The UNO Q's dual-brain architecture maps naturally onto the SLM use case: real-time sensing on the MCU, AI reasoning on the MPU, with **Bridge RPC** as the glue between them.
@@ -1123,9 +1150,7 @@ Button: one leg → D3
         other leg → GND
 ```
 
-
-![](./images/jpeg/hw.jpg)
-
+![](./images/jpeg/hardware.jpg)
 
 ### Step 2 — `sketch/sketch.ino`
 
