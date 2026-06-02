@@ -36,6 +36,14 @@ Running Small Language Models with llama.cpp and Bridge RPC
 
 This tutorial runs a Small Language Model (SLM) directly on the Arduino UNO Q, with no internet connection and no cloud API calls. The inference engine is `llama.cpp` running as a system service on the Linux (MPU) side. A Python application built with the `arduino-app-cli` framework uses Bridge RPC to expose the SLM to the STM32 sketch on the MCU side, and an optional Flask endpoint exposes the same service over HTTP to other devices on the network.
 
+**The Project**
+
+Imagine you have a camera monitoring potential stagnant water sources that are suitable for mosquito larval development. A YOLO model could be trained, for example, to detect water on discarded car tires or buckets. The output of such a model would be one of the inputs to a **Dengue Risk Classifier**. The classifier will also have other inputs, such as temperature and humidity, which are also important conditions for mosquito larvae development. Based on those inputs, the classifier should categorize the situation by turning on external LEDS based on the risk and also providing an explanation through a webpage. 
+
+![](./images/png/yolo-integration.png)
+
+**The Architecture**
+
 The worked example is a dengue risk classifier: the MCU reads temperature, humidity, and a water-presence signal from sensors; the SLM categorizes the situation as `low`, `medium`, or `high` risk with a one-sentence explanation; the MCU drives the RGB LEDs to match the risk level. The pattern generalizes to any application where sensors produce structured data and a language model produces a structured verdict.
 
 ![](./images/png/block-project.png)
@@ -99,7 +107,7 @@ You need at least **5 GB of free space** to complete the build and model downloa
 
 [Qwen3.5-0.8B](https://qwen.ai/blog?id=qwen3.5) (released February 2026 by Alibaba's Qwen team) is the recommended SLM for the UNO Q for a few reasons:
 
-- **Designed for edge devices.** The Qwen3.5 Small series (0.8B, 2B, 4B, 9B) uses a hybrid architecture combining Gated Delta Networks with sparse Attention, tuned for low-latency inference on constrained hardware.
+- **Designed for edge devices.** The Qwen3.5 Small series (0.8B, 2B, 4B, 9B) uses a hybrid architecture that combines Gated Delta Networks with sparse Attention and is tuned for low-latency inference on constrained hardware.
 - **Hybrid thinking/non-thinking mode.** In non-thinking mode the model answers directly without internal chain-of-thought, which keeps latency low and avoids the "reasoning loops" that plague thinking models on slow hardware.
 - **201 languages.** Useful for multilingual teaching contexts (English/Portuguese/Spanish/etc.) and for Global South deployments.
 - **Newer than LLama 3.2 and Gemma 3.** Better quality-per-parameter than earlier models at this size point on most benchmarks.
@@ -114,7 +122,7 @@ You need at least **5 GB of free space** to complete the build and model downloa
 | `SmolLM2-135M-Instruct Q4_K_M` | 135 M | ~95 MB | Very fast, limited reasoning. Good for routing/classification only. |
 | `SmolLM2-360M-Instruct Q4_K_M` | 360 M | ~230 MB | Balanced. Recommended fallback if 0.8B is too tight on space. |
 | `Qwen3.5-0.8B Q8.0` | 800 M | ~880 MB | **Our primary choice.** Best quality-per-parameter for edge. |
-| `Qwen3.5-2B (Q4-Q8)` | 2B | 1.5 to 2 GB | Excellent, but could be too large without aggressive cleanup. |
+| `Qwen3.5-2B (Q4-Q8)` | 2B | 1.25 to 2 GB | Excellent, but a little slower. |
 
 ### Quantization: Q4 vs Q8 for Sub-1B Models
 
@@ -130,6 +138,8 @@ Recommendations:
 - **Try Unsloth Dynamic quants** (`UD-Q4_K_XL`). These upcast critical layers to 8 or 16 bits while keeping overall size close to Q4. Available from the [unsloth/Qwen3.5-0.8B-GGUF](https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF) repo.
 - **Try Q8_0** if you have space (~850 MB). Quality is meaningfully better, but leaves very little headroom on the current factory image. (This is the choice for this tutorial.)
 - **For production use, combine Q4 with strong few-shot prompting** and `response_format: json_object` to compensate for quantization noise.
+
+> [unsloth/Qwen3.5-2B-GGUF (UD-Q4_K_XL)](https://huggingface.co/unsloth/Qwen3.5-2B-GGUF/blob/main/Qwen3.5-2B-UD-Q4_K_XL.gguf) is a great model when latency is not an issue. The 2B model with Unlosh Dynamic quants (`UD-Q4_K_XL`) should have double the latency of the 0.8B/8_0 model, but it has superior performance. 
 
 ## 3. Hardware and Software Requirements
 
@@ -789,6 +799,8 @@ During testing on a UNO Q 4 GB **without any heatsink or fan**:
 | Sustained inference (long answers) | ~62 °C |
 
 All of these are well under the 70–80 °C range where ARM cores begin to throttle. The UNO Q runs cooler than a Raspberry Pi 5 under comparable loads. **No heatsink or fan is required** for normal SLM workloads, even in sustained use. For enclosures with poor ventilation (outdoor sensor boxes, stacked classroom boards), a small adhesive heatsink is cheap insurance but not strictly necessary.
+
+> Regarding power consuption, the UNO-Q reached a maximun of 3.1W during long inferences (with CPU @62 °C) 
 
 ### Bonus: The Built-In WebUI
 
@@ -1598,6 +1610,7 @@ Measured on a UNO Q 4 GB with the factory image, Qwen3.5-0.8B Q8_0, no heatsink,
 | Temperature during normal inference | ~54 °C |
 | Temperature during sustained long answers | ~62 °C |
 | Thermal throttle threshold | 70–80 °C (never reached) |
+| Power consuption (Max.) | 3.1 W |
 
 Honest takeaways:
 
@@ -1691,6 +1704,37 @@ If you deleted the llama.cpp source tree and still need to rebuild later, use a 
 
 ## 17. Going Further
 
+### Alternative Model (Qwen 3.5 2B)
+
+> **2B Q4 is a better choice for projects, such as the dengue classifier**, but **0.8B Q8 is the better choice for interactive demos**. 
+
+The general rule from the empirical Qwen3.5 work is that parameter count beats quantization. A 4-bit version of Qwen3.5 27B can still be substantially stronger than Qwen3.5 9B while using nearly the same amount of memory, and the same pattern holds further down the stack. The jump from 0.8B to 2B is the largest for agent tasks and long contexts. That is where the extra parameters really show up. The Kaitchup's broader review concludes that Q4 overall is very safe for Qwen3.5, so the 2B at Q4 keeps most of its raw capability.
+
+On the UNO Q specifically:
+
+| Dimension                                 | 0.8B Q8_0                   | 2B UD-Q4_K_XL          |
+| ----------------------------------------- | --------------------------- | ---------------------- |
+| Model file size                           | ~880 MB                     | ~1.25 GB               |
+| RAM footprint (model + 1024 ctx)          | ~1.1 GB                     | ~1.9–2.0 GB            |
+| Free RAM after load (out of ~3 GB usable) | ~1.7 GB                     | ~0.8 GB                |
+| Generation speed (measured / estimated)   | ~4.75 tok/s                 | ~1.8–2.5 tok/s         |
+| End-to-end `classify()` latency           | 6–12 s                      | 15–25 s (est.)         |
+| Quality on structured JSON                | Good with a strong few-shot | Noticeably more robust |
+| Quality on free-form chat                 | Adequate                    | Meaningfully better    |
+| Thermal load                              | ~54 °C inference            | ~58–62 °C inference    |
+| Storage room left on `/home/arduino`      | comfortable                 | comfortable            |
+
+What this means in practice:
+
+- **For the dengue classifier (a Bridge call every 30 s):** the 2B Q4 wins on quality, and the extra ~10 s latency is invisible inside a 30 s polling window. The structured JSON path becomes more reliable — fewer parse-and-retry rounds, better adherence to the few-shot pattern, less reliance on `presence_penalty` tricks.
+- **For the WebUI / chat demos:** the 0.8B Q8 stays responsive. At ~2 tok/s, a 100-token answer on the 2B takes 50 seconds, which feels broken in a chat context even if the answer is better.
+- **For headroom:** 0.8B Q8 leaves ~1.7 GB free. 2B Q4 leaves ~0.8 GB. Tight but workable, as long as nothing else on the board spikes (browsers, App Lab build, large Flask request bursts). If you ever want to run two models, or expand context beyond 1024, the 0.8B is the safer foundation.
+
+Two things worth trying before committing:
+
+1. **Try the Unsloth `UD-Q4_K_XL` variant of the 2B**, not vanilla Q4_K_M. UD‑Q4-K‑XL outperforming other Q4 quants, while being ~8GB smaller in the Unsloth benchmarks — they upcast the sensitive tensors automatically, so you get most of Q6 quality at near-Q4 size. The same trick that helps Q4 on big models helps even more on small ones.
+2. **Run the same test prompt on both** and compare wall-clock time and JSON quality. With `llama-server` and the new WebUI, swapping models is a `systemctl edit` + restart. 
+
 ### Alternative SLM Backends
 
 This tutorial used llama.cpp because it's the lowest-overhead path on a CPU-only ARM64 board. Three other backends worth knowing about:
@@ -1717,13 +1761,11 @@ For example, implement the **[QClaw](https://github.com/laurenvil/Uno-QClaw)** a
 
 For applications where you want a *trained* classifier (rather than a general-purpose SLM doing zero-shot reasoning), Edge Impulse is the production path. The UNO Q has first-class Edge Impulse support. A practical hybrid: an Edge Impulse model handles high-frequency classification, while an SLM handles rare "I'm not sure" cases that need richer reasoning.
 
-For example, a YOLO model could detect standing water in tires, triggering the "Water Switch" sensor automatically.
-
-![](./images/png/yolo-integration.png)
+For example, the YOLO model mentioned at the beginning of this tutorial could be trained in Edge Impulse Studio to detect standing water in tires, automatically triggering the "Water Switch" input of the Dengue Risk Classifier and thereby replacing the button used in the project.
 
 ## 18. Conclusion
 
-This tutorial built a complete generative-AI application on the UNO Q from scratch: we built llama.cpp from source, ran it as a system service with Qwen3.5-0.8B, wrote a Python application that exposes the SLM both to the on-board MCU via Bridge RPC and to off-board clients via Flask, and built an Arduino sketch that drives an RGB LED based on the SLM's verdict. We dealt with the real constraints of the hardware (a single 9.8 GB partition with limited free space, 4 GB of shared RAM, CPU-only inference on four Cortex-A53 cores) and found practical workarounds for each.
+This tutorial built a complete generative-AI application on the UNO Q from scratch: we built llama.cpp from source, ran it as a system service with Qwen3.5-0.8B, wrote a Python application that exposes the SLM both to the on-board MCU via Bridge RPC and to off-board clients via Flask, and built an Arduino sketch that drives an RGB LED based on the SLM's verdict. We addressed the real constraints of the hardware (a single 9.8 GB partition with limited free space, 4 GB of shared RAM, and CPU-only inference on four Cortex-A53 cores) and found practical workarounds for each.
 
 ### Advantages of the UNO Q Approach for Generative AI
 
