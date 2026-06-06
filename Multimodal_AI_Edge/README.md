@@ -642,7 +642,7 @@ The 16 GB VENTUNO Q, with its Dragonwing NPU, changes the math. The Qwen3.5-2B b
 | Resource | URL |
 |---|---|
 | Part 1 — Running SLMs with llama.cpp and Bridge RPC | <https://github.com/Mjrovai/ARDUINO-UNO-Q/blob/main/Gen_AI_Edge/README.md> |
-| Project repository | <https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Gen_AI_Edge> |
+| Project repository | https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Multimodal_AI_Edge |
 | llama.cpp repository | <https://github.com/ggml-org/llama.cpp> |
 | llama.cpp multimodal (mtmd) documentation | <https://github.com/ggml-org/llama.cpp/blob/master/docs/multimodal.md> |
 | llama.cpp mtmd / libmtmd README | <https://github.com/ggml-org/llama.cpp/blob/master/tools/mtmd/README.md> |
