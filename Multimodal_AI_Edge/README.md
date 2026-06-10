@@ -131,7 +131,7 @@ Three flags deserve a comment.
 
 On startup, look for a `clip` / `mtmd` block confirming the projector loaded, a line reporting image support enabled, and `HTTP server listening` on `0.0.0.0:8081`. 
 
-![](./images/png/starting multimodal.png)
+![](./images/png/starting-multimodal.png)
 
 If a request later comes back with "image processing requires a vision model," the `mmproj` didn't load: check that you passed `--mmproj` and that the file path is right.
 
