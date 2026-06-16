@@ -47,7 +47,7 @@ The UNO Q does not replace the MCU boards or the Raspberry Pi in our curriculum 
 ## 3. Object Detection
 ## 4. KWS
 ## 5. Movement Classification and Anomaly Detection
-## [6. Generative AI at the Edge](./Gen_AI_Edge/README.md)
-## [7. Multimodal AI at the Edge](https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Multimodal_AI_Edge/README.md)
+## [6. Generative AI at the Edge Part 1](./Gen_AI_Edge/README.md)
+## [7. GenAI at the Edge, Part 2: Giving the Classifier Eyes](https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Multimodal_AI_Edge/README.md)
 ---
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
