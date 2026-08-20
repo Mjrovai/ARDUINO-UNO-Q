@@ -1,7 +1,9 @@
-# Arduino UNO Q Hands-On Tutorials:
-![](./Setup/images/jpeg/uno-q.jpg)
+# Arduino UNO Q Hands-On Tutorials
+
+![](./1-Setup/images/jpeg/uno-q.jpg)
 
 ---
+
 ## Why the Arduino UNO Q for an ML Engineering Course?
 
 In the Edge AI Machine Engineering courses, we have traditionally used separate hardware platforms for different tiers of the ML deployment spectrum:
@@ -42,12 +44,29 @@ The UNO Q does not replace the MCU boards or the Raspberry Pi in our curriculum 
 - **Cost-effective classroom deployment**: At ~$50 for the 2 GB variant, the UNO Q is comparable in price to a Raspberry Pi 4 but includes the MCU subsystem, Wi-Fi, Bluetooth, and LED matrix out of the box — no additional HATs or accessories needed for basic projects.
 
 ---
-## [1. Setup](./Setup/README.md)
-## [2. Image Classification](./Image_Classification/README.md)
-## 3. Object Detection
-## 4. KWS
-## 5. Movement Classification and Anomaly Detection
-## [6. Generative AI at the Edge Part 1: Running SLMs with llama.cpp](./Gen_AI_Edge/README.md)
-## [7. GenAI at the Edge, Part 2: Giving the Classifier Eyes](https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/Multimodal_AI_Edge/README.md)
+
+## Tutorials
+
+### Getting Started
+
+- **[1. Setup](./1-Setup/README.md)** — headless board bring-up over ADB, Wi-Fi, and SSH; running and inspecting the pre-installed examples; the `arduino-app-cli` workflow.
+
+### Generative AI
+
+A small language model, run entirely on the board, taught progressively — first as a standalone tool, then wired into vision, into physical sensors and actuators, and finally into an agent that decides what to do on its own.
+
+- **[2. Generative AI at the Edge](./2-Gen_AI/README.md)** — building `llama.cpp` from source, running Qwen3.5 from the CLI and from a local `llama-server`, and calling it from Python with the `openai` client.
+- **[3. Multimodal AI at the Edge](./3-Multimodal_AI_Edge/README.md)** — giving the same model eyes: loading a vision projector, running a vision-enabled server, and reasoning about camera/image input.
+- **[4. GenAI Meets the Real World](./4-Gen_AI_Edge/README.md)** — a dual-brain dengue-risk classifier: `llama-server` as a persistent systemd service, sensors and actuators on the MCU, Bridge RPC connecting Python and the sketch, and an optional Flask endpoint.
+- **[5. Agentic AI at the Edge](./5-Agentic_AI/README.md)** — native tool-calling: the model decides which tools to call and in what order, starting hardware-free (system info, files, a calculator, the onboard LED and LED matrix) and extending to real sensors and actuators.
+
+### Fixed-Function AI
+
+Trained, task-specific models — no language model involved — deployed and driven the same dual-brain way.
+
+- **[6. Image Classification](./6-Image_Classification/README.md)** — training a custom classifier in Edge Impulse Studio and deploying it to the UNO Q, both on static images and a live camera feed.
+- **7. Object Detection** — *coming soon.*
+
 ---
+
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
