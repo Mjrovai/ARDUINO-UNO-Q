@@ -10,13 +10,15 @@ In the Edge AI Machine Engineering courses, we have traditionally used separate 
 
 - **TinyML on microcontrollers** (MCUs): Boards like the Arduino Nano, Nicla Vision, and Seeed XIAO ESP32S3 Sense running quantized models under extreme memory constraints (256 KB–512 KB RAM, no OS). Students learn to deploy keyword-spotting, image-classification, and anomaly-detection models using TensorFlow Lite (LiteRT) for Microcontrollers and Edge Impulse, operating at milliwatt-level power.
 
-- **Edge AI on single-board computers** (SBCs): Platforms like the Raspberry Pi Zero 2 W and Raspberry Pi 5 running full Linux with Python-based ML frameworks (TensorFlow Lite (LiteRT), ONNX Runtime, PyTorch). Students work on more complex tasks, such as object detection with YOLO, generative AI with small language models, and multi-model pipelines — but without direct real-time hardware control.
+- **Edge AI on single-board computers** (SBCs): even within this tier, we've historically split the work across two different boards. A **Raspberry Pi Zero 2 W** handled "Fixed-Function AI" — trained, task-specific models: image classification, object detection, keyword spotting. Generative AI — small language models, multimodal reasoning — needed a **Raspberry Pi 5**; the Zero simply didn't have the RAM or CPU headroom for it. Two boards, two capability tiers, inside the same "SBC" category.
 
-These two tiers — MCU-based TinyML and SBC-based Edge AI — have always been taught as separate worlds, each with its own toolchain, programming language, and deployment workflow. Students would learn C/C++ and Arduino IDE for microcontrollers, then switch to Python and Linux for SBCs, often struggling to connect the two in a single project.
+These have always been taught as separate worlds — MCU-based TinyML, Fixed-Function SBC Edge AI, and Generative AI on a beefier SBC — each with its own toolchain and, in the SBC case, its own hardware.
 
-**The Arduino UNO Q bridges this gap.**
+**The Arduino UNO Q bridges more of this than any single board before it.**
 
-Its dual-brain architecture — a Linux-capable Qualcomm QRB2210 MPU paired with a real-time STM32U585 MCU on the same board — lets students experience both tiers simultaneously within a unified development environment. A single project can run an AI model in Python on the Linux side (like on a Raspberry Pi) while controlling sensors, motors, and LEDs from an Arduino sketch on the MCU side (like on a Nicla or XIAO) — with the two communicating seamlessly through Bridge RPC.
+Its dual-brain architecture — a Linux-capable Qualcomm QRB2210 MPU paired with a real-time STM32U585 MCU on the same board — lets students experience MCU-style real-time control and SBC-style AI inference simultaneously, in one project: an AI model runs in Python on the Linux side (like on a Raspberry Pi) while an Arduino sketch on the MCU side handles sensors, motors, and LEDs (like on a Nicla or XIAO) — the two communicating through Bridge RPC.
+
+It also closes the gap *within* the SBC tier that used to require two different Raspberry Pis. The **2 GB UNO Q** outperforms a Pi Zero 2 W at Fixed-Function AI and, unlike the Zero, is enough to introduce real Generative AI — running a small language model locally, as chapters 2–5 of this course do. The **4 GB variant** pushes further still. The Raspberry Pi 5 remains the right tool for heavier generative workloads (larger models, real-time multimodal pipelines) that outgrow what the UNO Q can hold in RAM — but for a huge slice of what used to require the Pi 5, the UNO Q is now enough, and it's the only one of the three that also gives you real-time hardware control on the same board.
 
 ### How the UNO Q Compares to What We've Used Before
 
@@ -40,6 +42,7 @@ The UNO Q does not replace the MCU boards or the Raspberry Pi in our curriculum 
 - **Unified TinyML + Edge AI workflow**: Students deploy ML models in Python while controlling the physical world from Arduino sketches — on the same board, in the same project.
 - **Real Linux skills on an Arduino**: The board runs standard Debian, so students practice SSH, package management, Python environments, and Git — all skills that transfer directly to Raspberry Pi, cloud servers, and production edge devices.
 - **Low barrier to entry**: Students familiar with Arduino from introductory courses find the UNO form factor, pin layout, and shield compatibility immediately recognizable. The learning curve is adding Linux, not starting from scratch.
+- **Generative AI, not just Fixed-Function AI**: the 2 GB variant is the first board in this course's SBC lineup that can introduce local LLMs/SLMs — previously a Raspberry Pi 5-only capability — while still being a capable Fixed-Function AI board in its own right.
 - **Edge Impulse integration**: The UNO Q has first-class Edge Impulse support, with pre-loaded models for image classification, object detection, keyword spotting, and anomaly detection — the same tasks we teach across the course.
 - **Cost-effective classroom deployment**: At ~$50 for the 2 GB variant, the UNO Q is comparable in price to a Raspberry Pi 4 but includes the MCU subsystem, Wi-Fi, Bluetooth, and LED matrix out of the box — no additional HATs or accessories needed for basic projects.
 
