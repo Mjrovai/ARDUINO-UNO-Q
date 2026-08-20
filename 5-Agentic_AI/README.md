@@ -369,7 +369,7 @@ void showOff()   { clearFrame(); matrix.renderBitmap(frame, 8, 13); }
 
 void showCheck() {
   clearFrame();
-  int pts[][2] = {{5,2},{6,3},{7,4},{6,5},{5,6},{4,7},{3,8},{2,9},{1,10}};
+  int pts[][2] = { {5,2}, {6,3}, {7,4}, {6,5}, {5,6}, {4,7}, {3,8}, {2,9}, {1,10} };
   for (auto &p : pts) frame[p[0]][p[1]] = 1;
   matrix.renderBitmap(frame, 8, 13);
 }
