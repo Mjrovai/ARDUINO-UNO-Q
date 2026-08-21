@@ -223,7 +223,13 @@ Try a prompt that can't be answered from the model's own knowledge:
 
 > *"What files are in my home directory, and is there anything in them about edge AI?"*
 
-Watch the chat. A confirmation card appears asking to run a specific tool with specific arguments *before* it executes. Approve it, watch the result stream back into the conversation, and see whether the model needs a second call — it likely will, one to list files and one to search inside them — before it gives you a final answer.
+Watch the chat. A confirmation card appears asking to run a specific tool with specific arguments *before* it executes. 
+
+![](./images/png/tools-approve.png)
+
+Approve it, watch the result stream back into the conversation, and see whether the model needs a second call — it likely will, one to list files and one to search inside them — before it gives you a final answer.
+
+![](./images/png/agent_1.png)
 
 That's Section 2's loop diagram happening in front of you, one approved step at a time. Point at it while it runs: send, decide, call, feed the result back, decide again.
 
