@@ -71,11 +71,23 @@ free -h
 
 For vision, you must load two files: the `model` and its `mmproj`. A warning that will save you an afternoon: the two have to come from the *same* model, because their embedding dimensions must match. Pair a projector with the wrong base, and the load fails outright with an `n_embd` mismatch. The good news is you already have the base model from the previous chapter — the same 0.8B GGUF you ran text-only there works here too, with the vision pathway switched off or on depending on whether you pass `--mmproj`. There's no separate "text-only" and "VL" download to keep straight, just the model plus its matching projector.
 
-In the [QWEN3.5-0.8B model webpage on HF](https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/tree/main), you can see all available files and versions (see them at the bottom of the page):
+In the [Unsloth QWEN3.5-0.8B model webpage on HF](https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/tree/main), for example, you can see all available files and versions (see them at the bottom of the page):
 
 ![](./images/png/img-proj.png)
 
-> If you downloaded the model from [Bartowski](https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/tree/main), download the projector from Bartowski as well. 
+Download the projector:
+
+```
+cd ~/models/Qwen3.5-0.8B-GGUF
+wget -c "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/mmproj-F16.gguf"
+```
+
+> If you downloaded the model from [Bartowski](https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/tree/main), download the projector from Bartowski accordingly. 
+
+```
+cd ~/models
+wget -c "https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/resolve/main/mmproj-Qwen_Qwen3.5-0.8B-f16.gguf"
+```
 
 ### A note on the projector's format
 
@@ -90,7 +102,7 @@ Here's the command for the 0.8B model. Run it in the foreground the first time s
 ```bash
 ./build/bin/llama-server \
   -m       /home/arduino/models/Qwen_Qwen3.5-0.8B-Q8_0.gguf \
-  --mmproj /home/arduino/models/mmproj-F16_0.8B.gguf \
+  --mmproj /home/arduino/models/mmproj-Qwen_Qwen3.5-0.8B-f16.gguf \
   --host 0.0.0.0 --port 8081 \
   -c 4096 -t 4 \
   -n 256 \
@@ -98,7 +110,7 @@ Here's the command for the 0.8B model. Run it in the foreground the first time s
   --image-max-tokens 256 \
   --reasoning off \
   --reasoning-budget 0 \
-  --alias qwen3.5-0.8b
+  --alias Bart-qwen3.5-0.8b
 ```
 
 Four flags deserve a comment.
@@ -123,13 +135,13 @@ Then open `http://<UNO_Q_IP>:8081/` on your desktop or mobile and drop in an ima
 
 > **Use images smaller than 640x640.**
 
-![](./images/png/image-descrip-server-1.png)
+![](./images/png/image-20260821125747406.png)
 
 > The total latency from start to finish was around a minute and half, which is pretty nice for such a small model. Regarding energy, the peak was 2.3W and the temperature gap around 20 °C (reached 56 °C).
 
 ### What the small model gets right, and wrong
 
-I tested the 0.8B on a generated scene: two kids on a platform in a big papaya tree, a ladder, a dirt road, mountains, and a farmhouse in the background. The description was genuinely good of the whole scene. It named the platform, the kids, the ladder, the path, the farmhouse, and the mood. Then it called the hanging papayas "mangos."
+I tested the 0.8B on a generated scene: The description was genuinely good for the whole scene. It named the platform, the kids, the ladder, the path, the clouds, and the mountains. Then it called the hanging papayas "quinces or similar fruits."
 
 That's worth keeping in sight, because it's the signature of a small VLM. The gist is solid; the specifics are unreliable. The model made up the fruits wrong. For a breeding-site screen, this matters: the model can reliably tell you "there's a container with standing water," but don't trust it to identify the container as a specific 200-liter drum. Design the question around what it's actually good at.
 

@@ -249,9 +249,12 @@ cd /home/arduino/models
 
 ### Step 2 — Download Qwen3.5-0.8B
 
-For this tutorial, the test was with 4-bit and 8-bit Bartowski quantization. The best result was with the [Q8_0 version](https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/blob/main/Qwen_Qwen3.5-0.8B-Q8_0.gguf) (about 797 MB).
+Two of the best quantizations are from [Bartowski](https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/tree/main) and [Unsloth.](https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/tree/main)  
+
+For the first part of this tutorial, the test was with 4-bit and 8-bit Bartowski quantization. The best result was with the [Q8_0 version](https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/blob/main/Qwen_Qwen3.5-0.8B-Q8_0.gguf) (about 797 MB).
 
 ```bash
+cd ~/models
 wget https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/resolve/main/Qwen_Qwen3.5-0.8B-Q8_0.gguf
 ```
 
@@ -262,16 +265,22 @@ wget https://huggingface.co/bartowski/Qwen_Qwen3.5-0.8B-GGUF/resolve/main/Qwen_Q
 ls -lh Qwen_Qwen3.5-0.8B-Q4_K_M.gguf
 ```
 
-> **For better quality (if space permits):** Try the Unsloth Dynamic quant, which upcasts critical model layers to 8 or 16 bits while keeping the overall file size close to Q4:
-> ```bash
-> wget https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/Qwen3.5-0.8B-UD-Q4_K_XL.gguf
-> ```
+I also make tests with Unsloth. The Unsloth Dynamic quant, which upcasts critical model layers to 16 bits while keeping the overall file size close to Q8: 
 
-> **For the 2 GB UNO Q or extremely tight storage:**
->
-> ```bash
-> wget https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF/resolve/main/SmolLM2-360M-Instruct-Q4_K_M.gguf
-> ```
+> The best is to put the models inside a directory to not make confusion
+
+```
+mkdir -p ~/models/Qwen3.5-0.8B-GGUF
+cd ~/models/Qwen3.5-0.8B-GGUF
+
+wget -c "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/Qwen3.5-0.8B-Q8_0.gguf"
+```
+
+**For the 2 GB UNO Q or extremely tight storage:**
+
+```bash
+wget https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF/resolve/main/SmolLM2-360M-Instruct-Q4_K_M.gguf
+```
 > Adjust the model path in the sections below accordingly.
 
 ### A Note on Quantization Quality for Sub-1B Models
@@ -339,6 +348,8 @@ While inference runs, monitor CPU use and temperature:
 ![](./images/png/temp-cpu-use.png)
 
 The UNO Q handles SLMs well. The inferences were done without any heatsink or fan. Internal temperature increased by about 20 °C (from ~30 °C to ~50 °C). For long answers, the temperature reached ~60 °C, which is lower than a Raspberry Pi 5 with an active cooler.
+
+> Check session 8. Using llama-server / Step 4 — Thermal Monitoring for creating a scriot to measure the temperature
 
 ### Create a Helper Script
 
@@ -497,7 +508,56 @@ The response arrives as a JSON object. The model's answer is in `choices[0].mess
 
 When you're done testing, go back to **Terminal 1** and press `Ctrl+C`. The model unloads and the port is freed. Keep it running for the next section — you'll need it for the Python examples.
 
-### Thermal Behavior (Measured)
+### Step 4 — Thermal Monitoring (Optional)
+
+The UNO Q exposes Qualcomm thermal data through Linux thermal and hwmon interfaces. To monitor the MPU temperature in real time during inference:
+
+```bash
+# Check thermal zone type
+cat /sys/class/thermal/thermal_zone0/type
+
+# Read current temperature (in millidegrees Celsius)
+cat /sys/class/thermal/thermal_zone0/temp
+
+# Live monitor (updates every second)
+watch -n 1 "cat /sys/class/hwmon/hwmon0/temp1_input"
+```
+
+For a friendlier readout, drop a small Python script in `~/q_temp_monitor.py`:
+
+```python
+#!/usr/bin/env python3
+import time
+from pathlib import Path
+
+# The mapss_thermal zone exposes the QRB2210 SoC temperature
+TEMP_PATH = Path("/sys/class/hwmon/hwmon0/temp1_input")
+
+def read_temp_c():
+    raw = int(TEMP_PATH.read_text().strip())
+    return raw / 1000.0
+
+if __name__ == "__main__":
+    try:
+        while True:
+            print(f"{read_temp_c():.1f} °C")
+            time.sleep(1.0)
+    except KeyboardInterrupt:
+        pass
+```
+
+Make it executable and run it in a side terminal while the SLM works:
+
+```bash
+chmod +x ~/q_temp_monitor.py
+~/q_temp_monitor.py
+```
+
+![](/Users/marcelo_rovai/Dropbox/2026/20-MJRoBot/Arduino-UNO-Q/TUTORIAL/Gen_AI_Edge/images/png/temp.png)
+
+You should see the reading climb from ~32 °C at idle to whatever your workload pushes it to during inference.
+
+#### Thermal Behavior (Measured)
 
 During testing on a UNO Q 4 GB **without any heatsink or fan**:
 
@@ -509,13 +569,29 @@ During testing on a UNO Q 4 GB **without any heatsink or fan**:
 
 All of these are well under the 70–80 °C range where ARM cores begin to throttle. The UNO Q runs cooler than a Raspberry Pi 5 under comparable loads. **No heatsink or fan is required** for normal SLM workloads, even in sustained use.
 
-### Bonus: The Built-In WebUI
+### Step 5 — The Built-In WebUI (Optional)
 
 Recent llama.cpp builds ship a SvelteKit-based chat interface embedded directly into the `llama-server` binary. No extra install, no extra flag. If the build from Section 5 is recent enough, the UI is already running on the same port as the API.
 
 From the UNO Q itself, use `http://127.0.0.1:8081/`, or tunnel from your laptop with `ssh -L 8081:127.0.0.1:8081 arduino@<UNO_Q_IP>` and open `http://localhost:8081/` in the host browser.
 
-From any device on the same Wi-Fi, open:
+Alternatively, adding `--host 0.0.0.0` to llama. cpp.cpp command, the WebUI can be opened from your desktop browser using the UNO Q IP   Address:
+
+```bash
+cd ~/llama.cpp
+
+./build/bin/llama-server \
+  --model ~/models/Qwen_Qwen3.5-0.8B-Q8_0.gguf \
+  --threads 4 \
+  --ctx-size 1024 \
+  --port 8081 \
+  --host 0.0.0.0 \
+  --reasoning off \
+  --reasoning-budget 0 \
+  --alias qwen3.5-0.8b
+```
+
+And so, from any device on the same Wi-Fi, open:
 
 **http://<UNO_Q_IP>:8081/**  (for example, in my case: http://192.168.5.114:8081/)
 

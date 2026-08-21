@@ -160,7 +160,7 @@ Read the default again: **no tools**. Nothing is exposed unless you name it on t
 
 ### Step 2 — Start the Server With Read-Only Tools Only
 
-Stop the server if it's running, and restar,t it naming three tools explicitly:
+Stop the server if it's running, and restart it, naming three tools explicitly:
 
 ```bash
 ~/llama.cpp/build/bin/llama-server \
@@ -243,9 +243,17 @@ Stop the server and restart it with one more tool:
 
 Then ask:
 
-> *"Create a file called notes.txt in my home directory with a two-line note about edge AI."*
+> *"Create a file called notes.txt in /home/arduino directory with a two-line note about edge AI."*
 
-Approve the write, and confirm from a terminal: `cat ~/notes.txt`.
+Approve the write, 
+
+![](./images/png/tools-write.png)
+
+> Note that the agent understood the task, selected the correct tool (Write File), and after that took the decision to also use another tool (Read File) to verify if the task was correct.
+
+Now, we can confirm by ourselves from a terminal: `cat ~/notes.txt`.
+
+![](./images/png/cat-write.png)
 
 Notice what that took: stopping the process and restarting it. You could not have granted this from the browser. That friction is the feature — expanding what an agent can reach is a deliberate act with a record of it in your shell history, not a checkbox someone clicks while distracted.
 

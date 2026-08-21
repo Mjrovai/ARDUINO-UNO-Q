@@ -434,7 +434,30 @@ sudo apt update
 sudo apt upgrade
 sudo reboot
 ```
+### Step 5 — Transfer Files (if necessary)
 
+#### a. Transferring files using FTP (FileZilla)
+
+Transferring files via FTP, such as [FileZilla FTP Client](https://filezilla-project.org/download.php?type=client), is also possible and much easier to use. Follow the instructions to install the program on your Desktop, then use the Uno-Q's IP address as the `Host`. For example:
+
+```bash
+sftp://192.168.5.85
+```
+
+Enter your UNO-Q `username and password`. Pressing `Quickconnect` opens two windows, one for your host computer desktop (right) and another for the UNO-Q (left).
+
+![](./images/png/filezila.png)
+
+#### b. Using scp
+
+From your host machine, navigate into the directory where you have files to transfer and for example, copy all files to the board:
+
+```bash
+cd <folder>
+scp -r * arduino@<UNO_Q_IP_ADDRESS>:~/ArduinoApps/<folder>/
+```
+
+Enter your password when prompted. You should see the files being transferred.
 
 ---
 
