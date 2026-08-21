@@ -553,7 +553,7 @@ chmod +x ~/q_temp_monitor.py
 ~/q_temp_monitor.py
 ```
 
-![](/Users/marcelo_rovai/Dropbox/2026/20-MJRoBot/Arduino-UNO-Q/TUTORIAL/Gen_AI_Edge/images/png/temp.png)
+![](./images/png/temp.png)
 
 You should see the reading climb from ~32 °C at idle to whatever your workload pushes it to during inference.
 
