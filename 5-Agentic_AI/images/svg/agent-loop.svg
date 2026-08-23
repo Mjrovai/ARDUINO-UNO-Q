@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="360" viewBox="0 0 680 360" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="380" viewBox="0 0 680 380" role="img" aria-labelledby="t d">
 <title id="t">The agent tool-calling loop</title>
 <desc id="d">The conversation is sent to the model, which replies with either a tool call or plain text. A tool call is run in Python and its result appended to the conversation, which loops back to the model. Plain text ends the loop.</desc>
 <style>
@@ -12,13 +12,17 @@
   </marker>
 </defs>
 
+<rect x="18" y="18" width="644" height="330" rx="12" fill="none" stroke="#888780" stroke-width="1" stroke-dasharray="5 4"/>
+<text class="s" x="34" y="360" fill="#5F5E5A">Everything in the dashed box is your harness — ordinary Python you write</text>
+
 <rect x="240" y="40" width="200" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
 <text class="t" x="340" y="63" text-anchor="middle" fill="#2C2C2A">Conversation</text>
 <text class="s" x="340" y="81" text-anchor="middle" fill="#5F5E5A">Prompt, tools, history</text>
 
 <line x1="340" y1="100" x2="340" y2="144" class="ln" marker-end="url(#a)"/>
 
-<rect x="240" y="150" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<rect x="232" y="142" width="216" height="72" rx="12" fill="#FFFFFF" stroke="none"/>
+<rect x="240" y="150" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
 <text class="t" x="340" y="173" text-anchor="middle" fill="#3C3489">Model decides</text>
 <text class="s" x="340" y="191" text-anchor="middle" fill="#534AB7">Tool call or plain text?</text>
 

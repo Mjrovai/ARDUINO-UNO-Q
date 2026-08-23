@@ -1,0 +1,5 @@
+Board Agent — running notes
+
+The UNO Q pairs a Qualcomm QRB2210 (Linux) with an STM32U585 (Zephyr).
+Qwen3.5-0.8B loads in about 600 MB of RAM at Q4_K_M.
+Bridge RPC is the only path between the Python side and the sketch.

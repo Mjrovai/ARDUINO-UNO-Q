@@ -1,0 +1,6 @@
+name: Board Agent
+description: "A tool-calling agent for the UNO Q — no external hardware required"
+icon: 🤖
+version: "1.0.0"
+ports: [7000]
+bricks: []
