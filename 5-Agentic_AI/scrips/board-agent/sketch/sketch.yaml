@@ -1,0 +1,8 @@
+profiles:
+  default:
+    fqbn: arduino:zephyr:uno_q
+    platforms:
+      - platform: arduino:zephyr
+    libraries:
+      - dependency: Arduino_RPClite (0.2.1)
+default_profile: default
