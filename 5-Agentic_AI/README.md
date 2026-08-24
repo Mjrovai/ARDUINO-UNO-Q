@@ -252,7 +252,9 @@ Here's the full set and why three of them made the cut:
 | `edit_file`, `apply_diff` | Modifies existing files in place | No |
 | `exec_shell_command` | Runs arbitrary shell commands | Not in a workshop |
 
-The server now exposes those three and nothing else. The others aren't merely switched off — as far as the browser is concerned, they don't exist.
+The server now exposes **only those three**. The others aren't merely switched off — as far as the browser is concerned, they don't exist.
+
+**DANGER:** The tag  `--tools all` will expose all 7 tools, which you can swith off if you are using `WebUI`. We will not do it here, once we will explicitly define what tools should be active for the model. 
 
 > **If the WebUI stops working when you add `--tools`**, you've hit the CORS default. Several builds clamp `--cors-origins` to localhost when tools are enabled, on the reasoning that a server handing out file access shouldn't accept requests from arbitrary origins. You're reaching the board at its LAN address, not localhost, so the origins won't match. Either name your origin explicitly (`--cors-origins http://<UNO_Q_IP>:8081`) or use the SSH tunnel from the safety note below and browse `http://localhost:8081`. The tunnel is the better habit.
 
@@ -449,6 +451,8 @@ This is the JSON Schema the model actually sees for two of the tools (the full l
 The `enum` on `set_led_matrix` is doing real work. Grammar-constrained decoding means the model *cannot* emit a pattern outside that list — the constraint is enforced during sampling, not checked afterward. Where you can express a tool's valid inputs as a fixed set, do it in the schema rather than validating in Python. It's the cheapest reliability win in the chapter.
 
 ## 6. Project Setup
+
+> If you want to install the complete App files at once, you can copy the [board-agent](https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/5-Agentic_AI/board-agent) files to the  `~/ArduinoApps` folder and skip to session 9. But for better understanding, I stronglly suggest that you go step by step on the App creation (session 6 and 7). 
 
 ### Step 1 — Create the App
 
@@ -1729,7 +1733,7 @@ Both models measured on the same board, same flags, same code:
 | Multi-step reasoning | unreliable | works |
 | RAM in use | comfortable on 2 GB | ~930 MB, fine on 4 GB |
 
-Roughly **4× slower, and it works**. That's the trade, and it's the most important number in this chapter — not because 4× is a good deal or a bad one, but because on an edge device you are always buying capability with latency and there's no way to avoid choosing.
+Roughly **2× slower, and it works**. That's the trade, and it's the most important number in this chapter — not because 2× is a good deal or a bad one, but because on an edge device you are always buying capability with latency and there's no way to avoid choosing.
 
 Which to ship depends on the task, not on which is "better":
 
@@ -1953,7 +1957,7 @@ This chapter built a tool-calling agent from scratch: six small tools (system in
 
 ### Limitations and Considerations
 
-- **0.8B demonstrates the mechanism; 2B is the smallest model that reliably uses it.** Section 9 shows both failures and the swap that fixes them, and Section 10 prices it: roughly 4× the latency. That gap is the engineering problem of agents at the edge, not a bug to be fixed.
+- **0.8B demonstrates the mechanism; 2B is the smallest model that reliably uses it.** Section 9 shows both failures and the swap that fixes them, and Section 10 prices it: roughly 2× the latency. That gap is the engineering problem of agents at the edge, not a bug to be fixed.
 - **Every tool you add is something the model, not you, decides when to invoke.** The workspace boundary and the AST-based calculator are the two places this chapter draws that line; both get more load-bearing as the tool set grows.
 - **No memory across requests**, by design, to keep the loop simple — see Going Further for the extension.
 
@@ -1979,7 +1983,7 @@ This chapter built a tool-calling agent from scratch: six small tools (system in
 | Arduino_LED_Matrix library (bundled with UNO Q Zephyr core) | <https://github.com/arduino-libraries/Arduino_LED_Matrix> |
 | QClaw — agentic AI assistant on the UNO Q | <https://github.com/laurenvil/Uno-QClaw> |
 | Arduino UNO Q Documentation | <https://docs.arduino.cc/hardware/uno-q> |
-
+| "board-agent" app files | https://github.com/Mjrovai/ARDUINO-UNO-Q/tree/main/5-Agentic_AI/board-agent |
 ### References
 
 1. Qwen Team, "Qwen3.5 Small Model Series," Alibaba Cloud, March 2026.
