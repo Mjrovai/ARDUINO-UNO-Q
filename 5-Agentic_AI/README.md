@@ -22,9 +22,13 @@ Here's the shape of what you're building toward, taken from a real session in Se
 There's 14 GB free, well over 1 GB, so I've shown a checkmark on the matrix.
 ```
 
+![](./images/png/app-infograph.png)
+
 No `if` statement in your code chose that checkmark. You gave the model a threshold in English, it fetched a number it couldn't have known, compared the two, and acted on the result.
 
 The tools are deliberately ordinary: ask the board what OS it's running, do some arithmetic, list a few files, blink the built-in LED, draw a pattern on the onboard 8×13 LED matrix. None of it requires a single wire. That's on purpose — this chapter should run in any room, on any UNO Q, with nothing attached, which makes it the one to reach for in a workshop where you can't guarantee everyone has a breadboard.
+
+![](./images/svg/agent-anatomy.svg)
 
 The mechanism is llama-server's native, OpenAI-compatible **tool-calling API** (`tools=[...]` in the request, `tool_calls` in the response) — the same interface real cloud LLM APIs use, not a custom prompt-and-parse scheme. If you've read the "[Building Agents with SLMs](https://mjrovai.github.io/EdgeML_Made_Ease_ebook/raspi/advancing_adgeai/adv_edgeai.html#building-agents-with-slms)" chapter of the companion [Edge AI Engineering](https://mjrovai.github.io/EdgeML_Made_Ease_ebook/) book, that example routed a query through hand-written JSON classification, then called the numbers found in it — a technique the book itself flags as fragile (models struggle to reliably format the classification JSON, especially at 1B and below). The native tools API doesn't eliminate that fragility at small model sizes, but it puts the parsing burden on llama.cpp's grammar-constrained decoding instead of on hopeful prompt engineering, and it's the same shape of code you'd write against a hosted model.
 
