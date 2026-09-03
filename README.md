@@ -71,7 +71,7 @@ Trained, task-specific models — no language model involved — deployed and dr
 - **7. Object Detection** — *coming soon.*
 
 ### Arduino UNO Q Teaching Materials
-- Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [[Slides]](00_Curso_Folder/Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
+- Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
 - SLMs at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/localinf/localinf.html)
 - Setup - [[Book]](https://mjrovai.github.io/genai-uno-q/content/setup/setup.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/1-Setup/Ch1-Setup-Arduino-UNO-Q.pdf) [[Video]](https://youtu.be/V-sRd1l-x8s)
 - Generative AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/genai/genai.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/2-Generative-AI/Ch2-Generative-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/4qsv8_FRwwM)
