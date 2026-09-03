@@ -71,14 +71,14 @@ Trained, task-specific models — no language model involved — deployed and dr
 - **7. Object Detection** — *coming soon.*
 
 ### Arduino UNO Q Teaching Materials
-- Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
+- Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
 - SLMs at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/localinf/localinf.html)
-- Setup - [[Book]](https://mjrovai.github.io/genai-uno-q/content/setup/setup.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/1-Setup/Ch1-Setup-Arduino-UNO-Q.pdf) [[Video]](https://youtu.be/V-sRd1l-x8s)
-- Generative AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/genai/genai.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/2-Generative-AI/Ch2-Generative-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/4qsv8_FRwwM)
-- Multimodal AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/multimodai/multimodai.html) [[Slides]](00_Curso_Folder/4
+- Setup - [[Book]](https://mjrovai.github.io/genai-uno-q/content/setup/setup.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/1-Setup/Ch1-Setup-Arduino-UNO-Q.pdf) [[Video]](https://youtu.be/V-sRd1l-x8s)
+- Generative AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/genai/genai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/2-Generative-AI/Ch2-Generative-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/4qsv8_FRwwM)
+- Multimodal AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/multimodai/multimodai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4
 - Generative_AI-UNO-Q/3-Multimodal-AI/Ch3-Multimodal-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/6EwdZ_JCP0Q)
-- GenAI Meets the Real World - [[Book]](https://mjrovai.github.io/genai-uno-q/content/physicalai/physicalai.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/4-GenAI-Real-World/Ch4-GenAI-Meets-the-Real-World.pdf) [[Video]](https://youtu.be/M0vQx1sSbrs)
-- Agentic AI at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/agenticai/agenticai.html) [[Slides]](00_Curso_Folder/4-Generative_AI-UNO-Q/5-Agentic-AI) [[Video]](https://youtu.be/GPj2zQBnaqw)
+- GenAI Meets the Real World - [[Book]](https://mjrovai.github.io/genai-uno-q/content/physicalai/physicalai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/4-GenAI-Real-World/Ch4-GenAI-Meets-the-Real-World.pdf) [[Video]](https://youtu.be/M0vQx1sSbrs)
+- Agentic AI at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/agenticai/agenticai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/5-Agentic-AI) [[Video]](https://youtu.be/GPj2zQBnaqw)
 ---
 
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
