@@ -73,6 +73,7 @@ Trained, task-specific models — no language model involved — deployed and dr
 ### Arduino UNO Q Teaching Materials
 - Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
 - SLMs at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/localinf/localinf.html)
+- Arduino UNO Q: The most POWERFUL Arduino ever! [[Video]](https://youtu.be/WpSoM2VrNj8?si=2Rfqj-f1UIv43fb4)
 - Setup - [[Book]](https://mjrovai.github.io/genai-uno-q/content/setup/setup.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/1-Setup/Ch1-Setup-Arduino-UNO-Q.pdf) [[Video]](https://youtu.be/V-sRd1l-x8s)
 - Generative AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/genai/genai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/2-Generative-AI/Ch2-Generative-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/4qsv8_FRwwM)
 - Multimodal AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/multimodai/multimodai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/3-Multimodal-AI/Ch3-Multimodal-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/6EwdZ_JCP0Q)
