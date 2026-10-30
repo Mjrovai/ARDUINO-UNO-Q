@@ -62,6 +62,7 @@ A small language model, run entirely on the board, taught progressively — firs
 - **[3. Multimodal AI at the Edge](./3-Multimodal_AI_Edge/README.md)** — giving the same model eyes: loading a vision projector, running a vision-enabled server, and reasoning about camera/image input.
 - **[4. GenAI Meets the Real World](./4-Gen_AI_Edge/README.md)** — a dual-brain dengue-risk classifier: `llama-server` as a persistent systemd service, sensors and actuators on the MCU, Bridge RPC connecting Python and the sketch, and an optional Flask endpoint.
 - **[5. Agentic AI at the Edge](./5-Agentic_AI/README.md)** — native tool-calling: the model decides which tools to call and in what order, starting hardware-free (system info, files, a calculator, the onboard LED and LED matrix) and extending to real sensors and actuators.
+- **[RAG at the Edge](./RAG_Edge/README.md)** — retrieval-augmented generation: an embedding model on a second `llama-server`, a SQLite index of the WHO dengue guidelines, hybrid search and reranking, and an agent that decides when to search.
 
 ### Fixed-Function AI
 
@@ -79,6 +80,7 @@ Trained, task-specific models — no language model involved — deployed and dr
 - Multimodal AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/multimodai/multimodai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/3-Multimodal-AI/Ch3-Multimodal-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/6EwdZ_JCP0Q)
 - GenAI Meets the Real World - [[Book]](https://mjrovai.github.io/genai-uno-q/content/physicalai/physicalai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/4-GenAI-Real-World/Ch4-GenAI-Meets-the-Real-World.pdf) [[Video]](https://youtu.be/M0vQx1sSbrs)
 - Agentic AI at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/agenticai/agenticai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/5-Agentic-AI/Ch5-Agentic-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/GPj2zQBnaqw)
+- RAG at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/rag/rag.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/6-RAG-at-the-Edge/Ch6-RAG-at-the-Edge.pdf)
 ---
 
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
