@@ -4,7 +4,7 @@ Giving a Small Model a Library
 
 ![](./images/png/cover.png)
 
-> **Course materials for this chapter** — [slide deck](https://github.com/Mjrovai/UNIFEI-IESTI05-EDGE_AI/blob/main/00_Curso_Folder/4-Generative_AI-UNO-Q/6-RAG-at-the-Edge/Ch6-RAG-at-the-Edge.pdf) · video walkthrough *in preparation* (*Chapter 6* of the [IESTI05 lecture series](https://www.youtube.com/playlist?list=PLesj_E3B3AQQ)).
+> **Course materials for this chapter** — [slide deck](https://github.com/Mjrovai/UNIFEI-IESTI05-EDGE_AI/blob/main/00_Curso_Folder/4-Generative_AI-UNO-Q/6-RAG-at-the-Edge/Ch6-RAG-at-the-Edge.pdf) · [video walkthrough, 27:48](https://youtu.be/B2YE-YlDOns) (*Chapter 6* of the [IESTI05 lecture series](https://www.youtube.com/playlist?list=PLesj_E3B3AQQ)).
 
 ---
 

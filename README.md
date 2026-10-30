@@ -80,7 +80,7 @@ Trained, task-specific models — no language model involved — deployed and dr
 - Multimodal AI - [[Book]](https://mjrovai.github.io/genai-uno-q/content/multimodai/multimodai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/3-Multimodal-AI/Ch3-Multimodal-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/6EwdZ_JCP0Q)
 - GenAI Meets the Real World - [[Book]](https://mjrovai.github.io/genai-uno-q/content/physicalai/physicalai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/4-GenAI-Real-World/Ch4-GenAI-Meets-the-Real-World.pdf) [[Video]](https://youtu.be/M0vQx1sSbrs)
 - Agentic AI at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/agenticai/agenticai.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/5-Agentic-AI/Ch5-Agentic-AI-at-the-Edge.pdf) [[Video]](https://youtu.be/GPj2zQBnaqw)
-- RAG at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/rag/rag.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/6-RAG-at-the-Edge/Ch6-RAG-at-the-Edge.pdf)
+- RAG at the Edge - [[Book]](https://mjrovai.github.io/genai-uno-q/content/rag/rag.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/6-RAG-at-the-Edge/Ch6-RAG-at-the-Edge.pdf) [[Video]](https://youtu.be/B2YE-YlDOns)
 ---
 
 *Tutorials created for IESTI05 — Edge AI Machine Learning System Engineering, UNIFEI. Licensed under GNU General Public License 3.0.*
