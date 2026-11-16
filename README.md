@@ -69,7 +69,7 @@ A small language model, run entirely on the board, taught progressively — firs
 Trained, task-specific models — no language model involved — deployed and driven the same dual-brain way.
 
 - **[6. Image Classification](./6-Image_Classification/README.md)** — training a custom classifier in Edge Impulse Studio and deploying it to the UNO Q, both on static images and a live camera feed.
-- **7. Object Detection** — *coming soon.*
+- **[7. Object Detection](./7-Object_Detection/README.md)** — training FOMO and YOLO-Pro detectors in Edge Impulse Studio, loading the `.eim` model directly through `app.yaml`, measuring latency and FPS on the board, and counting boxes and wheels on a live camera feed, with the counts shown on the LED matrix.
 
 ### Arduino UNO Q Teaching Materials
 - Fundamentals - [[Book]](https://mjrovai.github.io/genai-uno-q/content/foundations/foundations.html) [[Slides]](https://mjrovai.github.io/UNIFEI-IESTI05-EDGE_AI/00_Curso_Folder/4-Generative_AI-UNO-Q/0-Foundations/Ch0-Foundations.pdf) [[Video]](https://youtu.be/43RIDu_mGiA)
