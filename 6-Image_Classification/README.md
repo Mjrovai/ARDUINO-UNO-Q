@@ -99,7 +99,7 @@ The UNO Q ships with a pre-installed image classification example. This example 
 
 ### Understanding the Architecture
 
-The pre-installed `examples:image-classification` app works as follows:
+The pre-installed `examples:inspirational/image-classification` app works as follows:
 
 ```
 Browser (your PC)                          UNO Q (MPU / Python)
@@ -126,7 +126,7 @@ Key points:
 SSH into the UNO Q (or use the VS Code integrated terminal) and run:
 
 ```bash
-arduino-app-cli app start examples:image-classification
+arduino-app-cli app start examples:inspirational/image-classification
 ```
 
 Wait for the app to build and start.
@@ -155,7 +155,7 @@ You should see a web interface with an **upload button** that lets you select an
 
 Try uploading different images and observe how the model classifies them.
 
-> **Note**: The terminal logs (`arduino-app-cli app logs examples:image-classification`) will show the app startup messages but **will not show the classification results** — those are sent directly to the browser via WebSocket.
+> **Note**: The terminal logs (`arduino-app-cli app logs examples:inspirational/image-classification`) will show the app startup messages but **will not show the classification results** — those are sent directly to the browser via WebSocket.
 
 ![](./images/png/log.png)
 
@@ -164,13 +164,13 @@ Try uploading different images and observe how the model classifies them.
 Read through the example's source to understand how it works. From an SSH terminal:
 
 ```bash
-cat /var/lib/arduino-app-cli/examples/image-classification/python/main.py
+cat /var/lib/arduino-app-cli/examples/inspirational/common/image-classification/python/main.py
 ```
 
 Or, if you're using VS Code Remote-SSH (see [chapter 4 §2](../4-Gen_AI_Edge/README.md#2-setting-up-vs-code-with-remote-ssh) for setup), open the folder and browse `python/main.py` directly:
 
 1. **File > Open Folder...**
-2. Navigate to `/var/lib/arduino-app-cli/examples/image-classification/`
+2. Navigate to `/var/lib/arduino-app-cli/examples/inspirational/common/image-classification/`
 3. Open `python/main.py`.
 
 The key components:
@@ -207,7 +207,7 @@ Notice that:
 ### Step 5 — Stop the Example
 
 ```bash
-arduino-app-cli app stop examples:image-classification
+arduino-app-cli app stop examples:inspirational/image-classification
 ```
 
 ### Runing an Example from Arduino App Lab
@@ -413,7 +413,7 @@ This path uses the Brick architecture with your custom model. Quick to set up, b
 We can copy an example using CLI as below 
 
 ```bash
-cp -r /var/lib/arduino-app-cli/examples/image-classification/ ~/ArduinoApps/my-classifier-bricks
+cp -r /var/lib/arduino-app-cli/examples/inspirational/common/image-classification/ ~/ArduinoApps/my-classifier-bricks
 ```
 
 Or directly on the Arduino App Lab, giving it a new name. The project will be copied to `My Apps` area. 
