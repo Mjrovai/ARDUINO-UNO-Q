@@ -2,6 +2,8 @@
 
 ![](./images/png/img_class_cover.png)
 
+> **Course materials for this chapter** — [slide deck](https://github.com/Mjrovai/UNIFEI-IESTI05-EDGE_AI/blob/main/00_Curso_Folder/4-Generative_AI-UNO-Q/7-Image-Classification/Ch7-Image-Classification.pdf) · [video walkthrough, 13:08](https://youtu.be/BsRHIfeZH-0) (*Chapter 7* of the [IESTI05 lecture series](https://www.youtube.com/playlist?list=PLesj_E3B3AQQ)).
+
 ---
 
 ## 1. Overview

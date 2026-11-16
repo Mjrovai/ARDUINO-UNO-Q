@@ -2,6 +2,8 @@
 
 ![](./images/png/obj_det_cover-v2-orig.jpg)
 
+> **Course materials for this chapter** — [slide deck](https://github.com/Mjrovai/UNIFEI-IESTI05-EDGE_AI/blob/main/00_Curso_Folder/4-Generative_AI-UNO-Q/8-Object-Detection/Ch8-Object-Detection.pdf) · [video walkthrough, 18:18](https://youtu.be/m0VSdA2pgBI) (*Chapter 8* of the [IESTI05 lecture series](https://www.youtube.com/playlist?list=PLesj_E3B3AQQ)).
+
 ---
 
 ## 1. Overview
